@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cap Clair — Temps 2 · Choisir 2–3 pistes</title>
+
+  <style>
+    :root{
+      --green:#A8C1A1; --sky:#B8CBD0; --ink:#344D59; --beige:#FFFAF3;
+      --azure:#9BB0B8; --terra:#D49A89; --brown:#815133;
+      --bg:var(--beige); --paper:#fff;
+      --border: color-mix(in srgb, var(--azure) 35%, #fff);
+      --muted: color-mix(in srgb, var(--ink) 72%, #fff);
+      --brand: var(--green); --brand2: var(--sky);
+      --shadow: 0 10px 30px rgba(0,0,0,.08);
+      --radius: 18px; --max: 980px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0; background:var(--bg); color:var(--ink); font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;}
+    .wrap{max-width:var(--max); margin:28px auto; padding:0 16px;}
+    .card{background:var(--paper); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden;}
+    .banner{
+      background:
+        radial-gradient(1200px 360px at 20% 0%, color-mix(in srgb, var(--brand2) 55%, transparent), transparent 60%),
+        linear-gradient(135deg, color-mix(in srgb, var(--brand) 92%, #fff 8%), color-mix(in srgb, var(--ink) 18%, var(--brand2) 82%));
+      color:#fff; padding:22px 22px 18px;
+    }
+    .top{display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;}
+    .brand{display:flex; align-items:center; gap:12px;}
+    .logo{width:52px; height:52px; border-radius:999px; overflow:hidden; border:1px solid rgba(255,255,255,.35); background:rgba(255,255,255,.16); box-shadow:0 6px 18px rgba(0,0,0,.10)}
+    .logo img{width:100%; height:100%; object-fit:cover; display:block}
+    .kicker{font-size:12px; letter-spacing:.12em; text-transform:uppercase; opacity:.92}
+    .title{font-size:20px; font-weight:780; margin:2px 0 0}
+    .meta{display:flex; gap:10px; flex-wrap:wrap; font-size:13px; opacity:.97}
+    .pill{padding:6px 10px; border-radius:999px; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.25); white-space:nowrap}
+    .subtitle{margin:14px 0 0; max-width:74ch; font-size:14px; opacity:.95}
+
+    .content{padding:26px 22px 28px;}
+    .section{max-width: 860px; margin: 0 auto;}
+    h2{font-size:18px; margin:0 0 10px}
+    .muted{color:var(--muted)}
+    .small{font-size:13px}
+    .divider{height:1px; background:var(--border); margin:18px 0 22px}
+
+    .actions{display:flex; gap:10px; flex-wrap:wrap; margin:18px 0 8px}
+    button{
+      appearance:none; border:1px solid var(--border); background:#fff; color:var(--ink);
+      padding:10px 12px; border-radius:999px; cursor:pointer; font-weight:800;
+    }
+    .primary{
+      background: color-mix(in srgb, var(--brand) 88%, var(--ink) 12%);
+      color:#fff; border-color: color-mix(in srgb, var(--brand) 70%, var(--ink) 30%);
+    }
+
+    details{border:1px solid var(--border); border-radius:14px; padding:12px 14px; background:#fff}
+    details + details{margin-top:12px}
+    summary{cursor:pointer; font-weight:900; color: color-mix(in srgb, var(--ink) 82%, var(--brand) 18%); list-style:none}
+    summary::-webkit-details-marker{display:none}
+
+    .list{margin:12px 0 0; padding:0; list-style:none; display:grid; gap:10px;}
+    .item{
+      display:flex; gap:10px; align-items:flex-start;
+      padding:12px 12px;
+      border:1px dashed var(--border);
+      border-radius:14px;
+      background: color-mix(in srgb, var(--brand) 10%, #fff);
+    }
+    .item input{margin-top:3px; transform:scale(1.05)}
+
+    label{display:block; font-weight:850; margin:16px 0 6px}
+    input[type="text"], textarea{
+      width:100%; padding:12px 12px; border:1px solid var(--border); border-radius:12px; background:#fff; outline:none; color:var(--ink);
+    }
+    textarea{min-height:78px; resize:vertical}
+    input:focus, textarea:focus{border-color: color-mix(in srgb, var(--brand) 55%, var(--border)); box-shadow:0 0 0 4px color-mix(in srgb, var(--brand2) 22%, transparent);}
+
+    .grid{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+    @media (max-width:860px){ .grid{grid-template-columns:1fr} }
+
+    .nav{display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap; margin-top:22px}
+    a.linkbtn{
+      display:inline-flex; gap:10px; align-items:center;
+      text-decoration:none; padding:10px 12px; border-radius:999px;
+      border:1px solid var(--border); background:#fff; color:var(--ink); font-weight:900;
+    }
+    a.linkbtn.primary{background:var(--ink); color:#fff; border-color: color-mix(in srgb, var(--ink) 70%, #000)}
+
+    @media print{
+      body{background:#fff}
+      .wrap{margin:0; max-width:none; padding:0}
+      .card{border:none; box-shadow:none; border-radius:0}
+      .actions, .smallprint, .nav{display:none !important}
+      details{break-inside:avoid}
+      input, textarea{border:1px solid #bbb !important; box-shadow:none !important}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="card">
+      <header class="banner">
+        <div class="top">
+          <div class="brand">
+            <div class="logo"><img src="assets/logo.png" alt="Logo"></div>
+            <div>
+              <div class="kicker">Cap Clair — Semaine 4</div>
+              <div class="title">Temps 2 · Choisir 2–3 pistes</div>
+            </div>
+          </div>
+          <div class="meta">
+            <div class="pill">Coche 2–3 max</div>
+            <div class="pill">Imprimable ✓</div>
+            <div class="pill">Export réponses ✓</div>
+          </div>
+        </div>
+        <p class="subtitle">Tu ne fais pas le plan. Tu identifies des pistes de pas possibles. Le choix final vient au Temps 3.</p>
+      </header>
+
+      <main class="content">
+        <div class="section">
+          <h2>Règle simple</h2>
+          <p class="muted">Coche <strong>2 à 3</strong> idées maximum. (Si tu coches tout, ton cerveau revient dans le flou.)</p>
+
+          <div class="actions">
+            <button class="primary" type="button" id="btnPrint">Imprimer / PDF</button>
+            <button type="button" id="btnSave">Sauvegarder</button>
+            <button type="button" id="btnDownload">Télécharger mes réponses (.json)</button>
+            <button type="button" id="btnReset">Réinitialiser</button>
+          </div>
+          <p class="muted small smallprint">Tu peux aussi écrire tes 3 pistes en bas si tu préfères.</p>
+
+          <div class="divider"></div>
+
+          <details>
+            <summary>👨‍👩‍👧 Famille</summary>
+            <ul class="list">
+              <li class="item"><input type="checkbox" name="idee" value="Conversation claire (15 min)"><span>Conversation claire (15 min)</span></li>
+              <li class="item"><input type="checkbox" name="idee" value="Poser une limite / règle simple"><span>Poser une limite / règle simple</span></li>
+              <li class="item"><input type="checkbox" name="idee" value="Demander du relais / aide concrète"><span>Demander du relais / aide concrète</span></li>
+              <li class="item"><input type="checkbox" name="idee" value="Ajuster une routine (matin/soir)"><span>Ajuster une routine (matin/soir)</span></li>
+              <li class="item"><input type="checkbox" name="idee" value="Planifier une action précise (RDV, inscription…)"><span>Planifier une action précise (RDV, inscription…)</span></li>
+            </ul>
+          </details>
+
+          <details>
+            <summary>💼 Professionnel</summary>
+            <ul class="list">
+              <li class="item"><input type="checkbox" name="idee" value="Clarifier une priorité (1 tâche)"><span>Clarifier une priorité (1 tâche)</span></li>
+              <li class="item"><input type="checkbox" name="idee" value="Dire non / renégocier un délai"><span>Dire non / renégocier un délai</span></li>
+              <li class="item"><input type="checkbox" name="idee" value="Envoyer 1 message / 1 candidature"><span>Envoyer 1 message / 1 candidature</span></li>
+              <li class="item"><input type="checkbox" name="idee" value="Prendre un RDV (mentor, RH, client…)"><span>Prendre un RDV (mentor, RH, client…)</span></li>
+              <li class="item"><input type="checkbox" name="idee" value="Mettre à jour CV/portfolio (micro)"><span>Mettre à jour CV/portfolio (micro)</span></li>
+            </ul>
+          </details>
+
+          <details>
+            <summary>💰 Finances / administratif</summary>
+            <ul class="list">
+              <li class="item"><input type="checkbox" name="idee" value="Faire un point rapide (30 min)"><span>Faire un point rapide (30 min)</span></li>
+              <li class="item"><input type="checkbox" name="idee" value="Lister les urgences (factures, relances)"><span>Lister les urgences (factures, relances)</span></li>
+              <li class="item"><input type="checkbox" name="idee" value="Envoyer 1 mail / passer 1 appel"><span>Envoyer 1 mail / passer 1 appel</span></li>
+              <li class="item"><input type="checkbox" name="idee" value="Mettre en place un échéancier"><span>Mettre en place un échéancier</span></li>
+              <li class="item"><input type="checkbox" name="idee" value="Fixer un créneau “gestion” (15 min)"><span>Fixer un créneau “gestion” (15 min)</span></li>
+            </ul>
+          </details>
+
+          <details>
+            <summary>🧠 Organisation / charge mentale</summary>
+            <ul class="list">
+              <li class="item"><input type="checkbox" name="idee" value="Vider une liste complète sur papier"><span>Vider une liste complète sur papier</span></li>
+              <li class="item"><input type="checkbox" name="idee" value="Supprimer/pauser 1 engagement"><span>Supprimer/pauser 1 engagement</span></li>
+              <li class="item"><input type="checkbox" name="idee" value="Ranger 1 zone (pas tout)"><span>Ranger 1 zone (pas tout)</span></li>
+              <li class="item"><input type="checkbox" name="idee" value="Créer 1 système simple (to-do unique / agenda)"><span>Créer 1 système simple (to-do unique / agenda)</span></li>
+              <li class="item"><input type="checkbox" name="idee" value="Bloquer 1 créneau pour moi"><span>Bloquer 1 créneau pour moi</span></li>
+            </ul>
+          </details>
+
+          <details>
+            <summary>❤️ Relationnel</summary>
+            <ul class="list">
+              <li class="item"><input type="checkbox" name="idee" value="Clarifier ce que je veux (10 lignes)"><span>Clarifier ce que je veux (10 lignes)</span></li>
+              <li class="item"><input type="checkbox" name="idee" value="Demander un échange (cadre + durée)"><span>Demander un échange (cadre + durée)</span></li>
+              <li class="item"><input type="checkbox" name="idee" value="Dire ce qui ne me convient plus"><span>Dire ce qui ne me convient plus</span></li>
+              <li class="item"><input type="checkbox" name="idee" value="Poser une limite claire"><span>Poser une limite claire</span></li>
+              <li class="item"><input type="checkbox" name="idee" value="Prendre de la distance sur un point"><span>Prendre de la distance sur un point</span></li>
+            </ul>
+          </details>
+
+          <details>
+            <summary>🌿 Santé / énergie</summary>
+            <ul class="list">
+              <li class="item"><input type="checkbox" name="idee" value="Prendre un RDV / bilan"><span>Prendre un RDV / bilan</span></li>
+              <li class="item"><input type="checkbox" name="idee" value="Réduire 1 chose qui épuise"><span>Réduire 1 chose qui épuise</span></li>
+              <li class="item"><input type="checkbox" name="idee" value="Ajouter 1 chose qui recharge (10 min/j)"><span>Ajouter 1 chose qui recharge (10 min/j)</span></li>
+              <li class="item"><input type="checkbox" name="idee" value="Régulariser le sommeil (1 micro-règle)"><span>Régulariser le sommeil (1 micro-règle)</span></li>
+              <li class="item"><input type="checkbox" name="idee" value="Activer 1 levier simple (hydratation, repas…)"><span>Activer 1 levier simple (hydratation, repas…)</span></li>
+            </ul>
+          </details>
+
+          <label>Mes 3 pistes (si je préfère écrire)</label>
+          <div class="grid">
+            <input type="text" name="piste1" placeholder="1) …" />
+            <input type="text" name="piste2" placeholder="2) …" />
+          </div>
+          <div style="margin-top:12px">
+            <input type="text" name="piste3" placeholder="3) …" />
+          </div>
+
+          <div class="nav">
+            <a class="linkbtn" href="temps-1.html">← Temps 1</a>
+            <a class="linkbtn primary" href="temps-3.html">Aller au Temps 3 →</a>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    const KEY = "capclair_t2_v1";
+
+    function fields(){ return Array.from(document.querySelectorAll("input, textarea")).filter(el => el.name); }
+
+    function serialize(){
+      const data = {};
+      for(const el of fields()){
+        if(el.type === "checkbox"){
+          if(!Array.isArray(data[el.name])) data[el.name] = [];
+          if(el.checked) data[el.name].push(el.value);
+        } else {
+          data[el.name] = el.value ?? "";
+        }
+      }
+      return data;
+    }
+
+    function apply(data){
+      for(const el of fields()){
+        const v = data[el.name];
+        if(el.type === "checkbox") el.checked = Array.isArray(v) ? v.includes(el.value) : false;
+        else el.value = (typeof v === "string") ? v : "";
+      }
+    }
+
+    function save(){ localStorage.setItem(KEY, JSON.stringify(serialize())); }
+    function load(){
+      try{ const raw = localStorage.getItem(KEY); if(raw) apply(JSON.parse(raw)); }catch(e){}
+    }
+
+    function downloadJSON(){
+      const payload = { fiche:"Cap Clair — Temps 2", exported_at:new Date().toISOString(), data: serialize() };
+      const blob = new Blob([JSON.stringify(payload, null, 2)], {type:"application/json"});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url; a.download = "capclair-temps-2-reponses.json";
+      document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    }
+
+    function resetAll(){
+      if(!confirm("Réinitialiser toutes les réponses du Temps 2 ?")) return;
+      localStorage.removeItem(KEY);
+      location.reload();
+    }
+
+    document.getElementById("btnPrint").addEventListener("click", () => window.print());
+    document.getElementById("btnSave").addEventListener("click", () => { save(); alert("Sauvegardé ✅"); });
+    document.getElementById("btnDownload").addEventListener("click", downloadJSON);
+    document.getElementById("btnReset").addEventListener("click", resetAll);
+
+    load();
+    window.addEventListener("beforeunload", save);
+  </script>
+</body>
+</html>
